@@ -141,8 +141,8 @@ return median;
 
 
 const reset1 = document.querySelector('#reset-button')
-reset.addEventListener('click',resetPage)
+reset1.addEventListener('click',resetPage)
 
 function resetPage() {
-    reset1.reset();
+    document.location.reload(true);
 }
