@@ -34,26 +34,42 @@ let newD6Double = document.querySelector('#double-d6-roll-1');
 newD6Double.src = 'images/start/d6.png';
 let newD6Double2 = document.querySelector('#double-d6-roll-2');
 newD6Double2.src = 'images/start/d6.png';
+
 function changeD6RollPic (){
 let roll = getRandomNumber(6)
    // const newD6 = document.querySelector(‘#d6-roll’)
 newD6.src = `./images/d6/${roll}.png`
 sixes.push(roll)
+document.querySelector('#d6-rolls-mean').innerText = mean (sixes).toFixed(2)
+// document.querySelector('#d6-rolls-median').innerText = mode (sixes).toFixed(2)
+document.querySelector('#d6-rolls-median').innerText = median (sixes).toFixed(2)
 }
+
 // changeD6RollPic()
 function changeDoubleD6RollPics (){
-   let roll = getRandomNumber(6)
-   let rollAgain = getRandomNumber(6)
-   document.querySelector('#double-d6-roll-1').src=`./images/d6/${roll}.png`
-   document.querySelector('#double-d6-roll-2').src=`./images/d6/${rollAgain}.png`
+    let roll = getRandomNumber(6)
+    let rollAgain = getRandomNumber(6)
+    doubleSixes.push(roll+rollAgain)
+
+    document.querySelector('#double-d6-roll-1').src=`./images/d6/${roll}.png`
+    document.querySelector('#double-d6-roll-2').src=`./images/d6/${rollAgain}.png`
+    document.querySelector('#double-d6-rolls-mean').innerText = mean (doubleSixes).toFixed(2)
+    document.querySelector('#double-d6-rolls-median').innerText = median (doubleSixes).toFixed(2)
+
 }
 function changeD12RollPic (){
-   let roll = getRandomNumber(12)
-   document.querySelector('#d12-roll').src=`./images/numbers/${roll}.png`
+    let roll = getRandomNumber(12)
+    twelves.push(roll)
+    document.querySelector('#d12-roll').src=`./images/numbers/${roll}.png`
+    document.querySelector('#d12-rolls-mean').innerText = mean (twelves).toFixed(2)
+    document.querySelector('#d12-rolls-median').innerText = median (twelves).toFixed(2)
 }
 function changeD20RollPic () {
-   let roll = getRandomNumber(20)
-   document.querySelector('#d20-roll').src = `./images/numbers/${roll}.png`
+    let roll = getRandomNumber(20)
+    twenties.push(roll)
+    document.querySelector('#d20-roll').src = `./images/numbers/${roll}.png`
+    document.querySelector('#d20-rolls-mean').innerText = mean (twenties).toFixed(2)
+    document.querySelector('#d20-rolls-median').innerText = median (twenties).toFixed(2)
 }
 /*******************
 * EVENT LISTENERS *
@@ -74,8 +90,59 @@ d20.addEventListener('click', changeD20RollPic)
 /****************
  * MATH SECTION *
  ****************/
+function mean (arr) {
+    let sum = 0
+    for (let i = 0 ; i < arr.length ; i++) {
+        sum += arr[i]
+    }
+    return sum / arr.length
+}
+
+function median (arr) {
+    let median = 0;
+    
+    arr.sort();
+    if (arr.length % 2 === 0){
+        median = (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2;
+    }
+    else { 
+    median = arr[(arr.length - 1) / 2];
+}  
+return median;
+}
+
+// function mode (arr) {
+//     let mode = [];
+//     let count = [];
+
+//     for (i = 0; i < arr.length; i += 1) {
+        
+//     }
+
+
+
+    
+//     for (let i =0; i< count.length; i++){
+//             if (count[i] === maxIndex) {
+//                 mode.push(Number(i));
+//             }
+//         }
+//     return mode;
+// }
+
+
 
 
 /*********
  * RESET *
  *********/
+
+// let reset = document.querySelector('#reset-button');
+
+
+const reset1 = document.querySelector('#reset-button')
+reset.addEventListener('click',resetPage)
+
+function resetPage() {
+    reset1.reset();
+}
