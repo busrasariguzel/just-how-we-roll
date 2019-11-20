@@ -43,6 +43,8 @@ sixes.push(roll)
 document.querySelector('#d6-rolls-mean').innerText = mean (sixes).toFixed(2)
 // document.querySelector('#d6-rolls-median').innerText = mode (sixes).toFixed(2)
 document.querySelector('#d6-rolls-median').innerText = median (sixes).toFixed(2)
+
+
 }
 
 // changeD6RollPic()
@@ -111,24 +113,7 @@ function median (arr) {
 return median;
 }
 
-// function mode (arr) {
-//     let mode = [];
-//     let count = [];
 
-//     for (i = 0; i < arr.length; i += 1) {
-        
-//     }
-
-
-
-    
-//     for (let i =0; i< count.length; i++){
-//             if (count[i] === maxIndex) {
-//                 mode.push(Number(i));
-//             }
-//         }
-//     return mode;
-// }
 
 
 
